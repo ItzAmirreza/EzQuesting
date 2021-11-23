@@ -15,7 +15,7 @@ Plugin uses 2 types of data saving method, for quests and for user data.
 User data is being saved in mongodb(so it is required), and for quests data, in the quests.yml configuration file.
 
 Plugin supports 5 objectives (Killing, Breaking, Placing, Walking and execution of command).
-Each quest can have infinite amount of phases, and each phase can have only one objective. Additionally, to make to more realistic, configurator is free to make conversation before & after the phases, and can execute commands at the end of each phase.
+Each quest can have infinite amount of phases, and each phase can have only one objective. Additionally, to make it more realistic, configurator is free to make conversation before & after the phases, and can execute commands at the end of each phase.
 
 Plugin has a main loop, which starts at the beginning of plugin initialization. This loop gets executed every tick, but not doing the job, in fact, having special timer within the same loop, for each job. Conversation is always a priority and blocks the continuation of the work in the QuestProcess object. QuestProcess object has the duty of handling everything related to a quest, when player is doing the quest. Each player can have infinite amount of QuestProcesses, as it depends on the amount of quests the player is doing at the same time.(Yes you can do multiple quests at the same time).
 
