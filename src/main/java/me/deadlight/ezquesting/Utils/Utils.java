@@ -33,24 +33,8 @@ public class Utils {
         File questsYml = new File(EzQuesting.pluginInstance.getDataFolder(), "quests.yml");
         if (!questsYml.exists()) {
             EzQuesting.logConsole("&eCreating a new quests data file...");
-            try {
-                questsYml.createNewFile();
-                EzQuesting.logConsole("&aCreating a new quests data was successful.");
-            } catch (IOException e) {
-                EzQuesting.logConsole("&c4Failed creating a new quests data file! Please fix this and try again.");
-                EzQuesting.disablePlugin();
-                return null;
-            }
-            FileConfiguration fileConfiguration = YamlConfiguration.loadConfiguration(questsYml);
-            fileConfiguration.set("quests", new ArrayList<>());
-            questsYml = new File(EzQuesting.pluginInstance.getDataFolder(), "quests.yml");
-            try {
-                fileConfiguration.save(questsYml);
-            } catch (IOException e) {
-                EzQuesting.logConsole("&4There was a problem with saving a data file! Please fix that and try again...");
-                EzQuesting.disablePlugin();
-                return null;
-            }
+            EzQuesting.pluginInstance.saveResource("quests.yml", true);
+            EzQuesting.logConsole("&aCreating a new quests data was successful.");
 
         }
         return YamlConfiguration.loadConfiguration(questsYml);

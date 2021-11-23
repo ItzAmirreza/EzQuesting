@@ -38,6 +38,8 @@ public final class EzQuesting extends JavaPlugin {
         } catch (UnknownHostException e) {
             e.printStackTrace();
             logConsole("&cError while connecting to database...");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
         }
         logConsole("&eChecking data files...");
         questsYml = Utils.checkForQuestsYml();
@@ -110,7 +112,11 @@ public final class EzQuesting extends JavaPlugin {
             onlinePlayer.closeInventory();
         }
         logConsole("&4Closing connection to database...");
-        DatabaseProvider.mongoClient.close();
+        try {
+            DatabaseProvider.mongoClient.close();
+        } catch (Exception exception) {
+            //nothing just don't spam the console please
+        }
         logConsole("&eEzQuesting unloaded.");
     }
 
