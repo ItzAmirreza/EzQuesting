@@ -9,7 +9,7 @@ You can use my own [quests.yml](https://github.com/ItzAmirreza/EzQuesting/blob/m
 
 Compiled version is downloadable from [here](https://cdn.discordapp.com/attachments/902581431019135029/912845176651804682/EzQuesting-1.0.jar).
 
-More technical description:
+**More technical description:**
 
 Plugin uses 2 types of data saving method, for quests and for user data. 
 User data is being saved in mongodb(so it is required), and for quests data, in the quests.yml configuration file.
