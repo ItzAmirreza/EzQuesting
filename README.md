@@ -1,5 +1,5 @@
 # EzQuesting
-EzQuesting is just a trail project and is not for production uses.
+EzQuesting is just a trail project and is not for production uses(Well it can be used for production too, but surely there are more advanced plugins out there).
 
 Plugin supports versions from 1.8.x all the way to 1.17.x
 
