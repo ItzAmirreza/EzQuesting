@@ -1,0 +1,13 @@
+name: EzQuesting
+version: '${project.version}'
+main: me.deadlight.ezquesting.EzQuesting
+api-version: 1.13
+authors: [ Dead_Light ]
+description: Create as much quest as you like, so easy that you forget whatyu doin
+commands:
+  eq:
+    description: main commands of the plugin EzQuesting
+    aliases:
+      - ezquesting
+      - equesting
+      - ezq

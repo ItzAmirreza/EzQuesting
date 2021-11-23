@@ -1,0 +1,100 @@
+quests:
+  "123e4567-e89b-12d3-a456-556642440000":
+    ready: true
+    name: Old Farmer
+    creator: "294f0c58-aab3-31be-a52c-61c24d49fc15"
+    description: You have to protect the farmer!
+    post-complete-commands:
+      - give %player% diamond 64
+      - say yay! %player% finished the quest
+    pre-conversation:
+      - Hey!
+      - Wassap %player%
+      - I mean Traveller!
+      - Can you help me?
+    post-conversation:
+      - Ma Man!
+      - Thank you for your help
+      - Who knows without ya what would happen to my farm
+      - Here is your reward! Cya buddy
+    phases:
+      1:
+        name: Go to the farm
+        description: Please walk 100 blocks and reach to the farm
+        pre-conversation:
+          - Alright soo
+          - Please walk with me for 100 blocks
+          - So we can get to the farm
+        post-conversation:
+          - hoof!
+          - hopefully you are not tired...
+          - here you go, drink this
+        post-completion-commands:
+          - give %player% WATER_BUCKET 1
+        objective: WALK
+        objective-data:
+          count: 100
+      2:
+        name: Killer machine
+        description: kill 5 zombies
+        pre-conversation:
+          - alright
+          - now it's time to show off your body
+          - these zombies and skeletons are just destroying my farm
+          - please kill em
+        post-conversation:
+          - what a nice hero!
+          - "&aFarmer heals you..."
+        objective: KILL
+        objective-data:
+          count: 5
+          types: [ZOMBIE, SKELETON]
+        post-completion-commands:
+          - heal %player%
+      3:
+        name: create a shield
+        description: to create a shield, you have to gather resources, please get 20 cobblestones
+        pre-conversation:
+          - ok, now that we are done with these creatures
+          - it's time to make a shield
+          - common help me out gathering resources.
+          - gather &e20 &7cobblestones or stones
+        post-conversation:
+          - aha!
+          - I guess that's enough for a shield
+        objective: BREAK
+        objective-data:
+          count: 20
+          types: [COBBLESTONE, STONE]
+        post-completion-commands: []
+      4:
+        name: create a shield
+        description: place 20 blocks, and create a wall to make a shield against hostiles
+        pre-conversation:
+          - ok, now its time to test your creativity
+          - make a shield as any shape you want with these resources
+        post-conversation:
+          - Hmmm,
+          - not bad, you have some skills
+        objective: PLACE
+        objective-data:
+          count: 20
+          types: [COBBLESTONE, STONE]
+        post-completion-commands: []
+      5:
+        name: set the time to day!
+        description: execute the command /day to get the rid of these hostiles for now
+        pre-conversation:
+          - Ummm %player%
+          - I think you might have the OP permission on this server
+          - Could you please set the time to day?
+        post-conversation:
+          - Awww, here we go!
+        objective: COMMAND
+        objective-data:
+          command: "/day"
+        post-completion-commands: []
+
+
+
+
