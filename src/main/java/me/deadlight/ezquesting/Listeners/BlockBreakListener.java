@@ -17,6 +17,8 @@ import java.util.List;
 
 public class BlockBreakListener implements Listener {
 
+    List<Material> validTypes = new ArrayList<>();
+
     @EventHandler(priority = EventPriority.MONITOR)
     public void onBreak(BlockBreakEvent event) {
         if (event.isCancelled()) {
@@ -38,7 +40,6 @@ public class BlockBreakListener implements Listener {
                     if (validTypesString == null) {
                         return;
                     }
-                    List<Material> validTypes = new ArrayList<>();
                     for (String vType : validTypesString) {
                         try {
                             validTypes.add(Material.valueOf(vType.toUpperCase()));
@@ -54,6 +55,7 @@ public class BlockBreakListener implements Listener {
                         XSound.ENTITY_CHICKEN_EGG.play(event.getPlayer());
 
                     }
+                    validTypes.clear();
                 }
             }
         }

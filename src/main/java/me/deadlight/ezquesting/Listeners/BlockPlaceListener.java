@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlockPlaceListener implements Listener {
+    List<Material> validTypes = new ArrayList<>();
+
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPlace(BlockPlaceEvent event) {
@@ -37,7 +39,6 @@ public class BlockPlaceListener implements Listener {
                     if (validTypesString == null) {
                         return;
                     }
-                    List<Material> validTypes = new ArrayList<>();
                     for (String vType : validTypesString) {
                         try {
                             validTypes.add(Material.valueOf(vType.toUpperCase()));
@@ -53,6 +54,7 @@ public class BlockPlaceListener implements Listener {
                         XSound.ENTITY_CHICKEN_EGG.play(event.getPlayer());
 
                     }
+                    validTypes.clear();
                 }
             }
         }

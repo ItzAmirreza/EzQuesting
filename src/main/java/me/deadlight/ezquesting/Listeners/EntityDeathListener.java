@@ -17,6 +17,8 @@ import java.util.List;
 
 public class EntityDeathListener implements Listener {
 
+    List<EntityType> validTypes = new ArrayList<>();
+
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
 
@@ -39,7 +41,6 @@ public class EntityDeathListener implements Listener {
                     if (validTypesString == null) {
                         return;
                     }
-                    List<EntityType> validTypes = new ArrayList<>();
                     for (String vType : validTypesString) {
                         try {
                             validTypes.add(EntityType.valueOf(vType.toUpperCase()));
@@ -55,6 +56,7 @@ public class EntityDeathListener implements Listener {
                         XSound.ENTITY_CHICKEN_EGG.play(entity.getKiller());
 
                     }
+                    validTypes.clear();
 
                 }
             }

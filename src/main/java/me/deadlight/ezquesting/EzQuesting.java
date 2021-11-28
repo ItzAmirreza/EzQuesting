@@ -1,14 +1,14 @@
 package me.deadlight.ezquesting;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
-import me.deadlight.ezquesting.Commands.MainCommands;
+import me.deadlight.ezquesting.Commands.EzQuestingCommand;
 import me.deadlight.ezquesting.Database.DatabaseProvider;
 import me.deadlight.ezquesting.Enums.QuestStatus;
 import me.deadlight.ezquesting.Listeners.*;
 import me.deadlight.ezquesting.Objects.PlayerQuestData;
 import me.deadlight.ezquesting.Objects.Quest;
 import me.deadlight.ezquesting.Objects.QuestProcess;
-import me.deadlight.ezquesting.Tasks.MainLoop;
+import me.deadlight.ezquesting.Tasks.QuestProcessingTask;
 import me.deadlight.ezquesting.Utils.Utils;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -47,7 +47,7 @@ public final class EzQuesting extends JavaPlugin {
         registerEvents();
         registerCommands();
         addOnlinePlayersToDatabase();
-        MainLoop.initializeLoop();
+        QuestProcessingTask.initializeLoop();
         logConsole("&aLoading completed, &d" + questCount + " &aquests was loaded.");
 
     }
@@ -63,7 +63,7 @@ public final class EzQuesting extends JavaPlugin {
     }
 
     private void registerCommands() {
-        getServer().getPluginCommand("eq").setExecutor(new MainCommands());
+        getServer().getPluginCommand("eq").setExecutor(new EzQuestingCommand());
     }
 
     private void addOnlinePlayersToDatabase() {

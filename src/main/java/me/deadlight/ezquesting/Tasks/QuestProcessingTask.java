@@ -9,7 +9,7 @@ import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 import java.util.List;
 
-public class MainLoop {
+public class QuestProcessingTask {
 
     public static void initializeLoop() {
         EzQuesting.pluginInstance.getServer().getScheduler().runTaskTimer(EzQuesting.pluginInstance, new Runnable() {

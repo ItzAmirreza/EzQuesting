@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class PlayerJoinListener implements Listener {
+    List<PlayerQuestData> questList = new ArrayList<>();
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
@@ -34,12 +35,10 @@ public class PlayerJoinListener implements Listener {
                 object = goingObject;
             }
             DBObject questsObject = (DBObject) object.get("quests");
-            List<PlayerQuestData> questList = new ArrayList<>();
             for (String questUUID : questsObject.keySet()) {
                 Quest foundQuest = Quest.getQuestWithID(UUID.fromString(questUUID));
                 DBObject questObject = (DBObject) questsObject.get(questUUID);
                 int statusNum = (int) questObject.get("status");
-                int phaseLevel = (int) questObject.get("currentphase");
                 if (foundQuest != null) {
                     if (statusNum == 1) {
                         questList.add(new PlayerQuestData(foundQuest, event.getPlayer().getUniqueId(), QuestStatus.ACTIVE));
@@ -51,6 +50,7 @@ public class PlayerJoinListener implements Listener {
                         questList.add(new PlayerQuestData(foundQuest, event.getPlayer().getUniqueId(), QuestStatus.NOTSTARTED));
                     }
                 }
+                questList.clear();
             }
 
             Utils.playerQuestsData.put(event.getPlayer().getUniqueId(), questList);
